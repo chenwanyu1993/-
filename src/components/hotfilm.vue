@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2>今日影院上映</h2>
+		<h2>今日影院上映,啦啦啦啦啦</h2>
 		<ul>
 			<li v-for="item in arr">
 				<img :src="item.pic_url" alt="">
