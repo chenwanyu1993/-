@@ -1,25 +1,22 @@
 <template>
 	<div>
-		<div class="hotfilm wth">
-			<h2>正在热映</h2>
-			<router-link :to="{name:'Reying'}">
+		<div class="boxofficestandings wth">
+			<h2>票房榜</h2>
+			<router-link :to="{name:'piaofang'}">
 				<span>更多</span>
 			</router-link>
 		</div>
 		
-		
-		
 		<ul>
-			<li v-for="(item,index) in arr">
-				<router-link :to="{name:'Detail',params:{id:item.id}}">
-					<img :src="item.images.small" alt="">
+			<li v-for="item in arr">
+			<router-link :to="{name:'Detail',params:{id:item.id}}">
+			<img :src="item.subject.images.small" alt="">
+					
 				</router-link>
-				<h2 class="title">{{ item.title }}</h2>
+				
+				<h2 class="title">{{ item.subject.title }}</h2>
 			</li>
 		</ul>
-		<!-- 啦啦 -->
-		
-		
 		<router-view></router-view>
 	</div>
 </template>
@@ -27,7 +24,7 @@
 	import Vue from 'vue'
 	import jsonp from 'jsonp'
 	export default{
-		name:"Hotfilm",
+		name:"Boxofficestandings",
 		data(){
 	      return {
 	        arr:"",
@@ -36,11 +33,12 @@
 		created(){
 			// var url = "../static/today.json"
 			//var url = "https://api.douban.com/v2/movie/in_theaters"
-			Vue.axios.get("../static/hotfilm.json").then((res)=>{
+			Vue.axios.get("../static/boxofficestandings.json").then((res)=>{
 				return res.data.subjects
 			}).then((data)=>{
-				//console.log(data)
+				
 				this.arr = data
+				// console.log(data)
 			})
 			
 			// jsonp(url,null,(err,data)=>{
@@ -56,16 +54,18 @@
 		}
 	}
 </script>
-<style>
+<style scoped>
 	
-	.hotfilm h2{
+	.boxofficestandings h2{
 		font-size: 0.3rem;
 		color: #111;
 	}
 	span{
 		font-size: 0.3rem;
-		color: #1ebc2a;
-		float: left
+		color: #1ebc2a
+	}
+	a{
+		text-decoration: none;
 	}
 	/*ul,li{
 		list-style: none
@@ -78,7 +78,7 @@
 	overflow: hidden;
 	}
 	ul li{
-		margin:8% 0.3% 0 5%;
+		margin: 0 10px;
 	}*/
 	ul li img{
 		width:80px;
