@@ -32,24 +32,26 @@
 	    },
 		created(){
 			// var url = "../static/today.json"
-			//var url = "https://api.douban.com/v2/movie/in_theaters"
-			Vue.axios.get("../static/boxofficestandings.json").then((res)=>{
-				return res.data.subjects
-			}).then((data)=>{
-				
-				this.arr = data
-				// console.log(data)
-			})
+			// var url = "https://api.douban.com/v2/movie/coming_soon"
 			
-			// jsonp(url,null,(err,data)=>{
-			// 	if(err){
-			// 		console.log('数据无法获取')
-			// 	}else{
-					
-			// 		this.arr = data.subjects;
-			// 		console.log(this.arr )
-			// 	}
+			var url = "https://api.douban.com/v2/movie/us_box"
+			// Vue.axios.get("../static/boxofficestandings.json").then((res)=>{
+			// 	return res.data.subjects
+			// }).then((data)=>{
+				
+			// 	this.arr = data
+			// 	// console.log(data)
 			// })
+			
+			jsonp(url,null,(err,data)=>{
+				if(err){
+					console.log('数据无法获取')
+				}else{
+					
+					this.arr = data.subjects;
+					 // console.log(this.arr )
+				}
+			})
 
 		}
 	}

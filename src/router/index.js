@@ -11,6 +11,12 @@ import paihang from '@/components/paihang'
 import piaofang from '@/components/piaofang'
 import Search from '@/components/Search'
 import List from '@/components/List'
+import Result from '@/components/Result'
+import MY from '@/components/MY'
+import login from '@/components/login'
+import register from '@/components/register'
+
+
 import Boxofficestandings from '@/components/Boxofficestandings'
 Vue.use(Router)
 
@@ -18,20 +24,20 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Swiper',
-      component: Swiper,
+       name: 'Swiper',
+       component: Swiper,
       children:[{
       	  path: '',
-	      name: 'Hotfilm',
-	      component: Hotfilm,
+	        name: 'Hotfilm',
+	        component: Hotfilm,
 	      children:[{
-	      	path:"",
-	      	name:'Comingfilm',
-	      	component:Comingfilm,
+  	      	path:"",
+  	      	name:'Comingfilm',
+  	      	component:Comingfilm,
 	      	children:[{
-	      		path:"",
-	      		name:'Top250',
-	      		component:Top250,
+  	      		path:"",
+  	      		name:'Top250',
+  	      		component:Top250,
 	      		children:[{
 	      			path:"",
 	      			name:"Boxofficestandings",
@@ -41,7 +47,7 @@ export default new Router({
 					      name: 'Search',
 					      component: Search
 				      }]
-
+              
 	      		}]
 	      	}]
 	      }]
@@ -77,6 +83,25 @@ export default new Router({
       name: 'List',
       component: List
     },
-
+    {
+      path: '/Result/:id',
+      name: 'Result',
+      component: Result
+    },
+    {
+      path: '/MY',
+      name: 'MY',
+      component: MY
+    },  
+    {
+      path: '/login',
+      name: 'login',
+      component: login
+    },
+     {
+      path: '/register',
+      name: 'register',
+      component: register
+    },
   ]
 })

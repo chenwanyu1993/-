@@ -35,23 +35,23 @@
 	    },
 		created(){
 			// var url = "../static/today.json"
-			//var url = "https://api.douban.com/v2/movie/in_theaters"
-			Vue.axios.get("../static/hotfilm.json").then((res)=>{
-				return res.data.subjects
-			}).then((data)=>{
-				//console.log(data)
-				this.arr = data
-			})
-			
-			// jsonp(url,null,(err,data)=>{
-			// 	if(err){
-			// 		console.log('数据无法获取')
-			// 	}else{
-					
-			// 		this.arr = data.subjects;
-			// 		console.log(this.arr )
-			// 	}
+			var url = "https://api.douban.com/v2/movie/in_theaters"
+			// Vue.axios.get("../static/hotfilm.json").then((res)=>{
+			// 	return res.data.subjects
+			// }).then((data)=>{
+			// 	//console.log(data)
+			// 	this.arr = data
 			// })
+			
+			jsonp(url,null,(err,data)=>{
+				if(err){
+					console.log('数据无法获取')
+				}else{
+					
+					this.arr = data.subjects;
+					// console.log(this.arr )
+				}
+			})
 
 		}
 	}
@@ -67,8 +67,8 @@
 		color: #1ebc2a;
 		float: left
 	}
-	/*ul,li{
-		list-style: none
+	/*ul{
+		overflow:visible
 	}
 	ul {
 	display: flex;

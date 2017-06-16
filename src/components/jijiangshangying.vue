@@ -1,5 +1,23 @@
 <template>
+	
 	<div>
+		<header  class="header1">
+			<div class="wai"> 
+				<router-link to="/">
+					<button class="h1"><icon name="fanhui" scale="3"></icon></button>
+				</router-link>
+				<div class="nei">
+					<input type="text" placeholder="搜索" >
+
+					<router-link :to="{ name: 'Result', params: { id: shuju }}">
+					<button @click="huoqu" class="btn2"><icon name="sousuo" scale="3"></icon></button></router-link>
+				</div>
+			
+			</div>
+				<router-link :to="{ name: 'MY'}">
+				<button class="btn3"><icon name="wode2" scale="3"></icon></button>
+				</router-link>
+		</header> 
 		<ul>
 			<li v-for="item in arr">
 				<router-link :to="{name:'Detail',params:{id:item.id}}">
@@ -18,8 +36,25 @@
 		data(){
 	      return {
 	        arr:"",
+	        shuju:"",
 	      }
 	    },
+	    methods:{
+			huoqu:function(){
+				var txt = document.getElementsByTagName("input")[0]
+				var val = txt.value
+				this.shuju = val
+				// console.log(this.shuju)
+			},
+		},
+	    methods:{
+			huoqu:function(){
+				var txt = document.getElementsByTagName("input")[0]
+				var val = txt.value
+				this.shuju = val
+				// console.log(this.shuju)
+			},
+		},
 		created(){
 			// var url = "../static/today.json"
 			//var url = "https://api.douban.com/v2/movie/in_theaters"
@@ -46,6 +81,7 @@
 <style>
 	ul{
 		height: 500px;
-		margin-top: 10px
+		margin-top: 10px;
+		overflow:visible
 	}
 </style>

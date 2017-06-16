@@ -18,12 +18,10 @@
 				</router-link>
 		</header> 
 		<div id="title">
-			<h4>{{this.$route.params.id}}电影</h4>
 			<ul>
 				<li v-for="item in arr">
 					<router-link :to="{name:'Detail',params:{id:item.id}}">
-						<!-- <img v-lazzy="imgUrl" alt=""> -->
-						<img :src="item.images.small"  alt="">
+						<img :src="item.images.small" alt="">
 					</router-link>
 					<h2 class="title">{{ item.title }}</h2>
 				</li>
@@ -35,19 +33,12 @@
 <script>
 	import Vue from "vue"
 	import jsonp from 'jsonp'
-	import VueLazyload from 'vue-lazyload'
-
-	Vue.use(VueLazyload, {
-	  loading: require('../assets/11.gif'),
-	})
 	export default {
-		name: "List",
+		name: "Result",
 		data(){
 			return {
 				arr:"",
 				shuju:"",
-				// imgUrl:""
-				menn:""
 			}
 		},
 		methods:{
@@ -65,7 +56,6 @@
 					}else{
 						this.arr = data.subjects
 	       			// console.log(data.subjects)
-	       				// this.imgUrl = this.arr.images.small
 					}
 				})
 			},
@@ -74,25 +64,23 @@
 		
 		created(){
 			var brr = window.location.hash.split("/")
+			// console.log(brr)
 			var crr = brr[brr.length-1]
-			var menn = 	decodeURIComponent(crr)
-			//  this.menn = $router.params
-			// console.log(menn)
+			var menn = decodeURIComponent(crr)
+//			console.log(menn)
+			var url = "/v2/movie/search?tag="+menn
 			// var url = "../../static/hotfilm.json"
 			// Vue.axios.get(url).then((res)=>{
 			// 	return res.data.subjects
 			// }).then((data)=>{
 			// 	this.arr = data
-			// 	this.imgUrl = this.arr.images.small
 			// })
-			var url = "/v2/movie/search?tag="+menn
 			jsonp(url,null,(err,data)=>{
 				if(err){
 					console.log('数据无法获取')
 				}else{
 					this.arr = data.subjects
        			// console.log(data.subjects)
-       				this.imgUrl = this.arr.images.small
 				}
 			})
 		}
