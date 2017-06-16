@@ -49,7 +49,7 @@
 		},
 		created(){
 			// var url = "../static/today.json"
-			var url = "https://api.douban.com/v2/movie/in_theaters"
+			var url = "https://api.douban.com/v2/movie/top250"
 			// Vue.axios.get("../static/top250.json").then((res)=>{
 			// 	return res.data.subjects
 			// }).then((data)=>{
